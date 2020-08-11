@@ -18,9 +18,9 @@
         :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
         :style="style"
       >
-        <div v-if="isTitle" class="el-dialog__header">
+        <div v-if="isTitle" class="el-dialog__header" :style="headerStyle">
           <slot name="title">
-            <span class="el-dialog__title">{{ title }}</span>
+            <!-- <span class="el-dialog__title">{{ title }}</span> -->
           </slot>
         </div>
 
@@ -125,6 +125,13 @@ export default {
     destroyOnClose: Boolean,
 
     dialogBody: {
+      type: Object,
+      default: () => {
+        return {};
+      }
+    },
+
+    headerStyle: {
       type: Object,
       default: () => {
         return {};
