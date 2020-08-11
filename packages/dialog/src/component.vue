@@ -51,7 +51,7 @@ import Migrating from 'element-ui/src/mixins/migrating';
 import emitter from 'element-ui/src/mixins/emitter';
 
 export default {
-  name: 'YDialog',
+  name: 'ElDialog',
 
   mixins: [Popup, emitter, Migrating],
 
