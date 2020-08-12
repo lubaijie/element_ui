@@ -136,6 +136,13 @@ export default {
       default: () => {
         return {};
       }
+    },
+
+    dialogStyle: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     }
   },
 
@@ -148,7 +155,7 @@ export default {
 
   computed: {
     style() {
-      const style = {};
+      const style = { ...this.dialogStyle };
       if (!this.fullscreen) {
         style.marginTop = this.top;
         if (this.width) {
