@@ -9,7 +9,7 @@
       class="el-dialog__wrapper"
       @click.self="handleWrapperClick"
     >
-      <el-scrollbar >
+      <el-scrollbar :wrapStyle="{ height: '100%' }" :viewStyle="{ height: '100%' }">
         <div
           :key="key"
           ref="dialog"
