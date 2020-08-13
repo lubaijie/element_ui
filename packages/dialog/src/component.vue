@@ -8,41 +8,39 @@
       v-show="visible"
       class="el-dialog__wrapper"
       @click.self="handleWrapperClick"
-    >
-      <el-scrollbar :wrapStyle="{ height: '100%' }" :viewStyle="{ height: '100%' }">
-        <div
-          :key="key"
-          ref="dialog"
-          role="dialog"
-          aria-modal="true"
-          :aria-label="title || 'dialog'"
-          :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
-          :style="style"
-        >
-          <div v-if="isTitle" class="el-dialog__header" :style="headerStyle">
-            <slot name="title">
-              <!-- <span class="el-dialog__title">{{ title }}</span> -->
-            </slot>
-          </div>
-
-          <!-- 关闭按钮 -->
-          <button
-            v-if="showClose"
-            type="button"
-            class="el-dialog__headerbtn"
-            style="height: 30px; width: 30px; z-index: 9999"
-            aria-label="Close"
-            @click="handleClose"
-          >
-            <i class="el-dialog__close el-icon el-icon-close" />
-          </button>
-
-          <div v-if="rendered" class="el-dialog__body" :style="dialogBody"><slot /></div>
-          <div v-if="$slots.footer" class="el-dialog__footer">
-            <slot name="footer" />
-          </div>
+    >     
+      <div
+        :key="key"
+        ref="dialog"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="title || 'dialog'"
+        :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
+        :style="style"
+      >
+        <div v-if="isTitle" class="el-dialog__header" :style="headerStyle">
+          <slot name="title">
+            <!-- <span class="el-dialog__title">{{ title }}</span> -->
+          </slot>
         </div>
-      </el-scrollbar>
+
+        <!-- 关闭按钮 -->
+        <button
+          v-if="showClose"
+          type="button"
+          class="el-dialog__headerbtn"
+          style="height: 30px; width: 30px; z-index: 9999"
+          aria-label="Close"
+          @click="handleClose"
+        >
+          <i class="el-dialog__close el-icon el-icon-close" />
+        </button>
+
+        <div v-if="rendered" class="el-dialog__body" :style="dialogBody"><slot /></div>
+        <div v-if="$slots.footer" class="el-dialog__footer">
+          <slot name="footer" />
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -51,14 +49,11 @@
 import Popup from 'element-ui/src/utils/popup';
 import Migrating from 'element-ui/src/mixins/migrating';
 import emitter from 'element-ui/src/mixins/emitter';
-import ElScrollbar from 'element-ui/packages/scrollbar';
 
 export default {
   name: 'ElDialog',
 
   mixins: [Popup, emitter, Migrating],
-
-  components: { ElScrollbar },
 
   props: {
     title: {
