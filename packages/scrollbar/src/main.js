@@ -17,6 +17,14 @@ export default {
     wrapClass: {},
     viewClass: {},
     viewStyle: {},
+    x: {
+      type: Boolean,
+      default: true
+    },
+    y: {
+      type: Boolean,
+      default: true
+    },
     noresize: Boolean, // 如果 container 尺寸不会发生变化，最好设置它可以优化性能
     tag: {
       type: String,
@@ -45,7 +53,15 @@ export default {
 
     if (gutter) {
       const gutterWith = `-${gutter}px`;
-      const gutterStyle = `margin-bottom: ${gutterWith}; margin-right: ${gutterWith}; overflow-x: hidden;`;
+      let gutterStyle = `margin-bottom: ${gutterWith}; margin-right: ${gutterWith};`;
+
+      if (!this.x) {
+        gutterStyle += ' overflow-x: hidden;';
+      }
+
+      if (!this.y) {
+        gutterStyle += ' overflow-y: hidden;';
+      }
 
       if (Array.isArray(this.wrapStyle)) {
         style = toObject(this.wrapStyle);
