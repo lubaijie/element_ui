@@ -21,6 +21,7 @@
         <slot name="prepend"></slot>
       </div>
       <input
+        :style="inputStyle"
         :tabindex="tabindex"
         v-if="type !== 'textarea'"
         class="el-input__inner"
@@ -189,7 +190,13 @@
         type: Boolean,
         default: false
       },
-      tabindex: String
+      tabindex: String,
+      inputStyle: {
+        type: Object,
+        default: () => {
+          return {};
+        }
+      }
     },
 
     computed: {
