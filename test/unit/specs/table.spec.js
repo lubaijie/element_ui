@@ -511,7 +511,7 @@ describe('Table', () => {
 
       setTimeout(_ => {
         const cell = vm.$el.querySelectorAll('.el-table__body .cell')[2]; // first row
-
+        console.log(cell);
         triggerEvent(cell.parentNode.parentNode, 'dblclick');
         expect(vm.result).to.length(3); // row, event, column
         expect(vm.result[0]).to.have.property('name').to.equal(getTestData()[0].name);
