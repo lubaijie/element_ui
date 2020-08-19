@@ -1777,7 +1777,8 @@
 <template>
   <el-table
     :data="tableData"
-    style="width: 100%">
+    style="width: 100%"
+    @row-dblclick="test">
     <el-table-column
       type="index"
       :index="indexMethod">
@@ -1841,6 +1842,9 @@
     methods: {
       indexMethod(index) {
         return index * 2;
+      },
+      test(row, column, event) {
+        console.log(row, column, event);
       }
     }
   };

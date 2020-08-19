@@ -290,8 +290,8 @@ export default {
       this.handleEvent(event, row, 'contextmenu');
     },
 
-    handleDoubleClick(event, row) {
-      this.handleEvent(event, row, 'dblclick');
+    handleDoubleClick(event, row, rowIndex) {
+      this.handleEvent(event, row, 'dblclick', rowIndex);
     },
 
     handleClick(event, row) {
@@ -330,7 +330,7 @@ export default {
         style={ [displayStyle, this.getRowStyle(row, $index)] }
         class={ rowClasses }
         key={ this.getKeyOfRow(row, $index) }
-        on-dblclick={ ($event) => this.handleDoubleClick($event, row) }
+        on-dblclick={ ($event) => this.handleDoubleClick($event, row, $index) }
         on-click={ ($event) => this.handleClick($event, row) }
         on-contextmenu={ ($event) => this.handleContextMenu($event, row) }
         on-mouseenter={ _ => this.handleMouseEnter($index) }
