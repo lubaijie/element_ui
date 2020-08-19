@@ -1843,8 +1843,8 @@
       indexMethod(index) {
         return index * 2;
       },
-      test(row, column, event) {
-        console.log(row, column, event);
+      test(row, column, event, index) {
+        console.log(row, column, event, index);
       }
     }
   };

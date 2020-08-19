@@ -291,15 +291,16 @@ export default {
     },
 
     handleDoubleClick(event, row, rowIndex) {
+      console.log(event, row, rowIndex);
       this.handleEvent(event, row, 'dblclick', rowIndex);
     },
 
-    handleClick(event, row) {
+    handleClick(event, row, rowIndex) {
       this.store.commit('setCurrentRow', row);
-      this.handleEvent(event, row, 'click');
+      this.handleEvent(event, row, 'click', rowIndex);
     },
 
-    handleEvent(event, row, name) {
+    handleEvent(event, row, name, rowIndex) {
       const table = this.table;
       const cell = getCell(event);
       let column;
@@ -309,7 +310,7 @@ export default {
           table.$emit(`cell-${name}`, row, column, cell, event);
         }
       }
-      table.$emit(`row-${name}`, row, column, event);
+      table.$emit(`row-${name}`, row, column, event, rowIndex);
     },
 
     rowRender(row, $index, treeRowData) {
@@ -331,7 +332,7 @@ export default {
         class={ rowClasses }
         key={ this.getKeyOfRow(row, $index) }
         on-dblclick={ ($event) => this.handleDoubleClick($event, row, $index) }
-        on-click={ ($event) => this.handleClick($event, row) }
+        on-click={ ($event) => this.handleClick($event, row, $index) }
         on-contextmenu={ ($event) => this.handleContextMenu($event, row) }
         on-mouseenter={ _ => this.handleMouseEnter($index) }
         on-mouseleave={ this.handleMouseLeave }>
