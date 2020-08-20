@@ -291,7 +291,6 @@ export default {
     },
 
     handleDoubleClick(event, row, rowIndex) {
-      console.log(event, row, rowIndex);
       this.handleEvent(event, row, 'dblclick', rowIndex);
     },
 
