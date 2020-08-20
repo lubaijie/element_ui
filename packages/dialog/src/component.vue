@@ -20,7 +20,7 @@
       >
         <div v-if="isTitle" class="el-dialog__header" :style="headerStyle">
           <slot name="title">
-            <!-- <span class="el-dialog__title">{{ title }}</span> -->
+            <span class="el-dialog__title" v-if="title.trim() !== ''">{{ title }}</span>
           </slot>
         </div>
 
